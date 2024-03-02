@@ -1,6 +1,9 @@
 package org.rushan;
 
-public record CustomerService() {
+import org.springframework.stereotype.Service;
+
+@Service
+public record CustomerService(CustomerRepository customerRepository) {
 
     public void registerCustomer(CustomerRegistrationRequest request) {
         Customer customer = Customer.builder()
@@ -8,6 +11,6 @@ public record CustomerService() {
                 .lastName(request.lastName())
                 .email(request.email())
                 .build();
-
+        customerRepository.save(customer);
     }
 }
