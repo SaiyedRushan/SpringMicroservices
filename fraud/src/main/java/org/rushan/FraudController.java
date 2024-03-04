@@ -2,6 +2,7 @@ package org.rushan;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.rushan.fraud.FraudCheckResponse;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

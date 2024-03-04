@@ -1,6 +1,7 @@
 package org.rushan;
 
 import lombok.AllArgsConstructor;
+import org.rushan.notification.NotificationRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

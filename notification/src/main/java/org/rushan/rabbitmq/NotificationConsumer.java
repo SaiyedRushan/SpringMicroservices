@@ -2,8 +2,8 @@ package org.rushan.rabbitmq;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.rushan.NotificationRequest;
 import org.rushan.NotificationService;
+import org.rushan.notification.NotificationRequest;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
