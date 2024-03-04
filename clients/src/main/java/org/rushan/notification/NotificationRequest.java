@@ -1,4 +1,4 @@
-package org.rushan;
+package org.rushan.notification;
 
 public record NotificationRequest(
         Integer toCustomerId,
