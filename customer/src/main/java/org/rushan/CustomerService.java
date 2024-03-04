@@ -1,14 +1,19 @@
 package org.rushan;
 
 
+import lombok.AllArgsConstructor;
+import org.rushan.fraud.FraudClient;
 import org.rushan.notification.NotificationRequest;
 import org.rushan.fraud.FraudCheckResponse;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
-public record CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate, RabbitMQMessageProducer rabbitMQMessageProducer) {
+@AllArgsConstructor
+public class CustomerService {
 
+    private final CustomerRepository customerRepository;
+    private final FraudClient fraudClient;
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
     public void registerCustomer(CustomerRegistrationRequest request) {
         Customer customer = Customer.builder()
                 .firstName(request.firstName())
@@ -17,11 +22,7 @@ public record CustomerService(CustomerRepository customerRepository, RestTemplat
                 .build();
 
         customerRepository.saveAndFlush(customer);
-        FraudCheckResponse fraudCheckResponse =  restTemplate.getForObject(
-                "http://FRAUD/api/v1/fraud-check/{customerId}",
-                FraudCheckResponse.class,
-                customer.getId()
-        );
+        FraudCheckResponse fraudCheckResponse =  fraudClient.isFraudster(customer.getId());
 
         assert fraudCheckResponse != null;
         if(fraudCheckResponse.isFraudster()) {
