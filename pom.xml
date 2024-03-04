@@ -17,7 +17,6 @@
         <module>notification</module>
         <module>amqp</module>
         <module>clients</module>
-
     </modules>
 
     <name>SpringMicroservices</name>
@@ -29,6 +28,7 @@
         <spring.boot.maven.plugin.version>2.5.7</spring.boot.maven.plugin.version>
         <spring.boot.dependencies.version>2.5.7</spring.boot.dependencies.version>
         <spring.cloud-version>2020.0.3</spring.cloud-version>
+        <image>saiyedrushan/${project.artifactId}:${project.version}</image>
     </properties>
 
     <dependencyManagement>
@@ -86,7 +86,7 @@
                     <version>3.1.4</version>
                     <configuration>
                         <from>
-                            <image>eclipse-temurin:17@sha256:2b47a8ea946ce1e5365a1562414ed576e378b7b670cadff3fb98ebecf2890cdc</image>
+                            <image>eclipse-temurin:17.0.10_7-jre-jammy</image>
                             <platforms>
                                 <platform>
                                     <architecture>arm64</architecture>
